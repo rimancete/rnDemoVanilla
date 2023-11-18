@@ -6,37 +6,25 @@
  */
 
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
+import Geolocation from '@react-native-community/geolocation';
 
 function App(): JSX.Element {
+  const getUserLocationHandler = async () => {
+    Geolocation.getCurrentPosition(info => console.log(info));
+  };
   return (
-    <View style={styles.screen}>
-      <Text>Hello world</Text>
+    <View style={styles.container}>
+      <Button title="GetLocation" onPress={getUserLocationHandler} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
+  container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
   },
 });
 
